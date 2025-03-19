@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 ///не понял как его нормально использовать. пока обошелся и без него
-class AppmRouteInformationProvider extends RouteInformationProvider with WidgetsBindingObserver, ChangeNotifier {
+class AppRouteInformationProvider extends RouteInformationProvider with WidgetsBindingObserver, ChangeNotifier {
   //если мы так задаем, то parseRouteInformation вызывается всегда с этим RouteInformation, а не из строки браузера...
   RouteInformation _value = RouteInformation(uri: Uri.parse('/'));
   @override

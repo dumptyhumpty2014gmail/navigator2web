@@ -40,16 +40,16 @@ class AppRouterDelegate extends RouterDelegate<IAppConfiguration> with ChangeNot
       setNewRoutePath(BooksListAppConfiguration());
     } else if (_isLogin == null && vm.isLogin == true) {
       //приложение запустилось, мы залогинены, переходим на сохраненную или на полученную из браузера конфигурацию
-      if (_curConfiguration is StartAppConfiguration) {
+      if (_currentConfiguration is StartAppConfiguration) {
         setNewRoutePath(BooksListAppConfiguration());
       }
     }
     _isLogin = vm.isLogin;
   }
 
-  IAppConfiguration? _curConfiguration = StartAppConfiguration();
+  IAppConfiguration? _currentConfiguration = StartAppConfiguration();
   @override
-  IAppConfiguration? get currentConfiguration => _curConfiguration;
+  IAppConfiguration? get currentConfiguration => _currentConfiguration;
   List<Page<dynamic>> _pages = [];
   List<MaterialPage> get pages => List.unmodifiable(_pages);
   @override
@@ -66,7 +66,7 @@ class AppRouterDelegate extends RouterDelegate<IAppConfiguration> with ChangeNot
         }
 
         ///для отлавливания не декларативного перехода
-        if (_curConfiguration is BooksBookAppConfiguration && route is BookPage) {
+        if (_currentConfiguration is BooksBookAppConfiguration && route is BookPage) {
           setNewRoutePath(BooksListAppConfiguration());
         }
       },
@@ -83,7 +83,7 @@ class AppRouterDelegate extends RouterDelegate<IAppConfiguration> with ChangeNot
         return;
       }
     }
-    _curConfiguration = configuration;
+    _currentConfiguration = configuration;
     _pages = [...configuration.getPages().map((e) => e.page)];
     notifyListeners();
   }
